@@ -1,0 +1,32 @@
+﻿生成启动时间为 2015/12/8 19:47:21。
+     1>项目“E:\Windows\calculator\calculator\calculator.vcxproj”在节点 2 上(build 个目标)。
+     1>PrepareForBuild:
+         正在创建目录“E:\Windows\calculator\Release\”。
+       InitializeBuildStatus:
+         正在创建“Release\calculator.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         D:\vs\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Release\calculator.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         D:\vs\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D _WINDOWS /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\calculator.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt calculator.cpp calculatorDlg.cpp
+         calculator.cpp
+         calculatorDlg.cpp
+       ResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /D NDEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0804" /IRelease\ /nologo /fo"Release\calculator.res" calculator.rc 
+       Link:
+         D:\vs\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Windows\calculator\Release\calculator.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /ManifestFile:"Release\calculator.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\Windows\calculator\Release\calculator.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Windows\calculator\Release\calculator.lib" /MACHINE:X86 Release\calculator.res
+         Release\calculator.obj
+         Release\calculatorDlg.obj
+         Release\stdafx.obj
+         正在生成代码
+         已完成代码的生成
+         calculator.vcxproj -> E:\Windows\calculator\Release\calculator.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"E:\Windows\calculator\Release\calculator.exe;#1" /manifest Release\calculator.exe.intermediate.manifest D:\vs\VC\Include\Manifest\dpiaware.manifest
+       FinalizeBuildStatus:
+         正在删除文件“Release\calculator.unsuccessfulbuild”。
+         正在对“Release\calculator.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“E:\Windows\calculator\calculator\calculator.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:07.81
