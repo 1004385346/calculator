@@ -1,0 +1,32 @@
+﻿生成启动时间为 2015/12/29 19:25:39。
+     1>项目“E:\Windows\asd\asd\asd.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“Debug\asd.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         D:\vs\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\asd.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt asdDlg.cpp
+         asdDlg.cpp
+       ResourceCompile:
+         所有输出均为最新。
+       ManifestResourceCompile:
+         所有输出均为最新。
+       Link:
+         D:\vs\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Windows\asd\Debug\asd.exe" /INCREMENTAL /NOLOGO /MANIFEST /ManifestFile:"Debug\asd.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"E:\Windows\asd\Debug\asd.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Windows\asd\Debug\asd.lib" /MACHINE:X86 Debug\asd.res
+         Debug\asd.exe.embed.manifest.res
+         Debug\asd.obj
+         Debug\asdDlg.obj
+         Debug\stdafx.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\asd.exe.embed.manifest" /manifest Debug\asd.exe.intermediate.manifest D:\vs\VC\Include\Manifest\dpiaware.manifest
+         所有输出均为最新。
+       LinkEmbedManifest:
+         所有输出均为最新。
+         asd.vcxproj -> E:\Windows\asd\Debug\asd.exe
+       FinalizeBuildStatus:
+         正在删除文件“Debug\asd.unsuccessfulbuild”。
+         正在对“Debug\asd.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“E:\Windows\asd\asd\asd.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:03.72
