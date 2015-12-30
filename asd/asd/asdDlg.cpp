@@ -6,6 +6,7 @@
 #include "asd.h"
 #include "asdDlg.h"
 #include "afxdialogex.h"
+#include "cmath"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -165,9 +166,17 @@ void CasdDlg::OnBnClickeddraw()
 	CPen pen(PS_SOLID,3,RGB(0,0,255));
 	oldpen=dc.SelectObject(&pen);
     dc.Ellipse(-100,100,100,-100); 
-	dc.Ellipse(-5,-5,5,5);
-	
-
+	dc.Ellipse(-3,-3,3,3);
+	for(int i=0;i<12;i++)
+	{
+		double l=96,ag=i*PI/6;
+		double a=l*sin(ag)+1,b=-l*cos(ag)+1,c=l*sin(ag)-1,d=-l*cos(ag)-1;
+	    dc.Ellipse(a,b,c,d); 
+	}
+	dc.TextOutW(-8,-90,L"12");
+	dc.TextOutW(80,-8,L"3");
+	dc.TextOutW(-4,76,L"6");
+	dc.TextOutW(-86,-8,L"9");
 }
 
 
