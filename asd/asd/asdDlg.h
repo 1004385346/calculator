@@ -32,4 +32,10 @@ protected:
 public:
 	afx_msg void OnBnClickeddraw();
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	int m_hour;
+	int m_min;
+	int m_sec;
+	double x,y;
+	double hourag,minag,secag;
 };
