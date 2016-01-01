@@ -76,6 +76,7 @@ BEGIN_MESSAGE_MAP(CasdDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_draw, &CasdDlg::OnBnClickeddraw)
 	ON_WM_MOUSEMOVE()
 	ON_WM_TIMER()
+	ON_EN_CHANGE(IDC_EDIT2, &CasdDlg::OnEnChangeEdit2)
 END_MESSAGE_MAP()
 
 
@@ -111,7 +112,7 @@ BOOL CasdDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
-	SetTimer(1,1000,NULL);
+	SetTimer(1,10,NULL);
 
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
@@ -203,17 +204,17 @@ void CasdDlg::OnMouseMove(UINT nFlags, CPoint point)
 void CasdDlg::OnTimer(UINT_PTR nIDEvent)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
-	int L1=70,L2=65,L3=60;
+	int L1=60,L2=50,L3=40;
 	CTime t = CTime::GetCurrentTime();
 	m_hour=t.GetHour();
 	m_min=t.GetMinute();
 	m_sec=t.GetSecond();
 	UpdateData(false);
 	CClientDC dc(this);
-	dc.SetWindowOrg(-150,-150);
+	dc.SetWindowOrg(-173,-140);
 	CPen *oldpen;
-	CPen whitepen(PS_SOLID,4,RGB(255,255,255));
-	CPen pen(PS_SOLID,3,RGB(0,0,0));
+	CPen whitepen(PS_SOLID,4,RGB(248,248,248));
+	/*CPen pen(PS_SOLID,3,RGB(0,0,0));
 	oldpen=dc.SelectObject(&pen);
     dc.Ellipse(-100,100,100,-100); 
     CPen ppen(PS_SOLID,8,RGB(0,0,0));
@@ -227,7 +228,7 @@ void CasdDlg::OnTimer(UINT_PTR nIDEvent)
 	dc.TextOutW(-8,-90,L"12");
 	dc.TextOutW(80,-8,L"3");
 	dc.TextOutW(-4,76,L"6");
-	dc.TextOutW(-86,-8,L"9");
+	dc.TextOutW(-86,-8,L"9");*/
 	oldpen=dc.SelectObject(&whitepen);
 	secag=m_sec*(PI/30);
 	x=L1*sin(secag);
@@ -272,8 +273,19 @@ void CasdDlg::OnTimer(UINT_PTR nIDEvent)
 	dc.MoveTo(0,0); 
 	dc.LineTo(x,y);
 	if(hourag>=6.2831852)
-	    hourag=-PI/21600;
+	    hourag=-PI/10800;
 	
 
 	CDialogEx::OnTimer(nIDEvent);
+}
+
+
+void CasdDlg::OnEnChangeEdit2()
+{
+	// TODO:  如果该控件是 RICHEDIT 控件，它将不
+	// 发送此通知，除非重写 CDialogEx::OnInitDialog()
+	// 函数并调用 CRichEditCtrl().SetEventMask()，
+	// 同时将 ENM_CHANGE 标志“或”运算到掩码中。
+
+	// TODO:  在此添加控件通知处理程序代码
 }

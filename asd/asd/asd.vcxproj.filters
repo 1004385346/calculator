@@ -22,6 +22,9 @@
     <None Include="res\asd.ico">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="res\37bOOOPIC3f.bmp">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="asd.h">

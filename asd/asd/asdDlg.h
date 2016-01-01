@@ -38,4 +38,5 @@ public:
 	int m_sec;
 	double x,y;
 	double hourag,minag,secag;
+	afx_msg void OnEnChangeEdit2();
 };
