@@ -95,6 +95,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
+    <None Include="res\37bOOOPIC3f.bmp" />
     <None Include="res\calculator.ico" />
     <None Include="res\calculator.rc2" />
   </ItemGroup>

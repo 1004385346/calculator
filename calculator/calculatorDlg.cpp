@@ -7,6 +7,7 @@
 #include "calculatorDlg.h"
 #include "afxdialogex.h"
 #include "Cmath"
+#define PI 3.1415926
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -53,12 +54,20 @@ CcalculatorDlg::CcalculatorDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CcalculatorDlg::IDD, pParent)
 	, m_str(_T(""))
 	, m_m(_T(""))
+	, m_year(0)
+	, m_month(0)
+	, m_day(0)
+	, m_hour(0)
+	, m_min(0)
+	, m_sec(0)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 	fs="";
 	ss=L"0";
 	charm=L"M";
 	m_str=fs+L"\r\n"+ss;
+	x=0;
+	y=0;
 }
 
 void CcalculatorDlg::DoDataExchange(CDataExchange* pDX)
@@ -66,6 +75,12 @@ void CcalculatorDlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Text(pDX, IDC_EDIT1, m_str);
 	DDX_Text(pDX, IDC_M, m_m);
+	DDX_Text(pDX, IDC_EDIT2, m_year);
+	DDX_Text(pDX, IDC_EDIT3, m_month);
+	DDX_Text(pDX, IDC_EDIT4, m_day);
+	DDX_Text(pDX, IDC_EDIT5, m_hour);
+	DDX_Text(pDX, IDC_EDIT6, m_min);
+	DDX_Text(pDX, IDC_EDIT7, m_sec);
 }
 
 BEGIN_MESSAGE_MAP(CcalculatorDlg, CDialogEx)
@@ -101,6 +116,8 @@ BEGIN_MESSAGE_MAP(CcalculatorDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_ms, &CcalculatorDlg::OnBnClickedms)
 	ON_BN_CLICKED(IDC_madd, &CcalculatorDlg::OnBnClickedmadd)
 	ON_BN_CLICKED(IDC_mminus, &CcalculatorDlg::OnBnClickedmminus)
+	ON_WM_MOUSEMOVE()
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -136,6 +153,7 @@ BOOL CcalculatorDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
+	SetTimer(1,10,NULL);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -881,4 +899,79 @@ void CcalculatorDlg::OnBnClickedmminus()
 		m_m=m_m+L"\r\n"+charm;
 	}
 	UpdateData(false);
+}
+
+
+void CcalculatorDlg::OnMouseMove(UINT nFlags, CPoint point)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	TRACE("X=%d,Y=%d\n",point.x,point.y);
+
+	CDialogEx::OnMouseMove(nFlags, point);
+}
+
+
+void CcalculatorDlg::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	int L1=60,L2=50,L3=40;
+	CTime t = CTime::GetCurrentTime();
+	m_year=t.GetYear();
+	m_month=t.GetMonth();
+	m_day=t.GetDay();
+	m_hour=t.GetHour();
+	m_min=t.GetMinute();
+	m_sec=t.GetSecond();
+	UpdateData(false);
+	CClientDC dc(this);
+	dc.SetWindowOrg(-537,-225);
+	CPen *oldpen;
+	CPen whitepen(PS_SOLID,4,RGB(248,248,248));
+	oldpen=dc.SelectObject(&whitepen);
+	secag=m_sec*(PI/30);
+	x=L1*sin(secag);
+	y=-L1*cos(secag);
+	dc.MoveTo(0,0);
+	dc.LineTo(x,y);
+	CPen secpen(PS_SOLID,2,RGB(150,150,150));  
+	oldpen=dc.SelectObject(&secpen);
+	secag=secag+PI/30;
+	x=L1*sin(secag);
+	y=-L1*cos(secag);
+	dc.MoveTo(0,0); 
+	dc.LineTo(x,y);
+	if(secag>=6.2831852)
+	    secag=-PI/30;
+	oldpen=dc.SelectObject(&whitepen);  
+	minag=m_min*(PI/30)+m_sec*(PI/1800);
+	x=L2*sin(minag);
+	y=-L2*cos(minag);
+	dc.MoveTo(0,0);
+	dc.LineTo(x,y);
+	CPen minpen(PS_SOLID,2.5,RGB(90,90,90)); 
+	oldpen=dc.SelectObject(&minpen);	                                          
+    minag=minag+PI/1800;
+	x=L2*sin(minag);
+	y=-L2*cos(minag);
+	dc.MoveTo(0,0); 
+	dc.LineTo(x,y);
+	if(minag>=6.2831852)
+	    minag=-PI/1800;
+	oldpen=dc.SelectObject(&whitepen);
+	hourag=m_hour*(PI/6)+m_min*(PI/360)+m_sec*(PI/21600);
+	x=L3*sin(hourag);
+	y=-L3*cos(hourag);
+	dc.MoveTo(0,0);
+	dc.LineTo(x,y);
+	CPen hourpen(PS_SOLID,3.5,RGB(50,50,50));
+	oldpen=dc.SelectObject(&hourpen);	                                          
+    hourag=hourag+PI/21600;
+	x=L3*sin(hourag);
+	y=-L3*cos(hourag);
+	dc.MoveTo(0,0); 
+	dc.LineTo(x,y);
+	if(hourag>=6.2831852)
+	    hourag=-PI/10800;
+
+	CDialogEx::OnTimer(nIDEvent);
 }

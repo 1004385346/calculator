@@ -70,4 +70,14 @@ public:
 	afx_msg void OnBnClickedms();
 	afx_msg void OnBnClickedmadd();
 	afx_msg void OnBnClickedmminus();
+	int m_year;
+	int m_month;
+	int m_day;
+	int m_hour;
+	int m_min;
+	int m_sec;
+	double hourag,minag,secag;
+	double x,y;
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
