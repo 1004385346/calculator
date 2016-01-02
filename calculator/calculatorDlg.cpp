@@ -8,7 +8,8 @@
 #include "afxdialogex.h"
 #include "Cmath"
 #define PI 3.1415926
-
+#include "mmsystem.h"
+#pragma comment(lib, "winmm.lib")
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -154,7 +155,7 @@ BOOL CcalculatorDlg::OnInitDialog()
 
 	// TODO: 在此添加额外的初始化代码
 	SetTimer(1,10,NULL);
-
+	PlaySound(TEXT("1.wav"),NULL,SND_FILENAME | SND_ASYNC);
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
