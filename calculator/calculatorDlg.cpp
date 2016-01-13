@@ -155,7 +155,7 @@ BOOL CcalculatorDlg::OnInitDialog()
 
 	// TODO: 在此添加额外的初始化代码
 	SetTimer(1,10,NULL);
-	PlaySound(TEXT("1.wav"),NULL,SND_FILENAME | SND_ASYNC);
+	PlaySound(TEXT("2.wav"),NULL,SND_FILENAME | SND_ASYNC);
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -246,15 +246,14 @@ void CcalculatorDlg::OnBnClicked1()
 	UpdateData(false);
 }
 
-
 void CcalculatorDlg::OnBnClicked2()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	if(flag2==1)
 	{
 		OnBnClickedC();
-		UpdateData(false);
-		flag2=0;
+    	UpdateData(false);
+    	flag2=0;
 	}
 	ss=ss+L"2";
 	if(ss.Find(L".")<0&&ss.Left(1)=="0")
@@ -459,6 +458,7 @@ void CcalculatorDlg::OnBnClickedCount()
 				else
 				{
 					MessageBox(L"哈哈，傻货！这都出错！");
+					OnBnClickedC();
 				}
 			}
 		}
@@ -830,9 +830,9 @@ void CcalculatorDlg::OnBnClickednegate()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	if(ss.Left(1)==L"-")
-	ss.Delete(0,1);
+		ss.Delete(0,1);
 	else
-	ss=L"-"+ss;    
+		ss=L"-"+ss;    
 	m_str=fs+L"\r\n"+ss;
 	UpdateData(false);
 
@@ -941,8 +941,7 @@ void CcalculatorDlg::OnTimer(UINT_PTR nIDEvent)
 	y=-L1*cos(secag);
 	dc.MoveTo(0,0); 
 	dc.LineTo(x,y);
-	if(secag>=6.2831852)
-	    secag=-PI/30;
+	
 	oldpen=dc.SelectObject(&whitepen);  
 	minag=m_min*(PI/30)+m_sec*(PI/1800);
 	x=L2*sin(minag);
@@ -956,8 +955,7 @@ void CcalculatorDlg::OnTimer(UINT_PTR nIDEvent)
 	y=-L2*cos(minag);
 	dc.MoveTo(0,0); 
 	dc.LineTo(x,y);
-	if(minag>=6.2831852)
-	    minag=-PI/1800;
+
 	oldpen=dc.SelectObject(&whitepen);
 	hourag=m_hour*(PI/6)+m_min*(PI/360)+m_sec*(PI/21600);
 	x=L3*sin(hourag);
@@ -971,8 +969,7 @@ void CcalculatorDlg::OnTimer(UINT_PTR nIDEvent)
 	y=-L3*cos(hourag);
 	dc.MoveTo(0,0); 
 	dc.LineTo(x,y);
-	if(hourag>=6.2831852)
-	    hourag=-PI/10800;
+	
 
 	CDialogEx::OnTimer(nIDEvent);
 }
